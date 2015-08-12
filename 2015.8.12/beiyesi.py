@@ -17,7 +17,7 @@ def clacNum(data):
 			prob[i][j] = float(ans[i][j])/n
 	return 	prob	 
 
-	  
+#  计算先验概率和条件概率	  
 def clacProb(data):
 	dataLen = len(data)
 	m = len(data[0]) - 1
@@ -32,7 +32,7 @@ def clacProb(data):
 		class_prob[i] = float(len(map_class[i]))/dataLen
 		xprob_y[i] = clacNum(map_class[i])
 	return class_prob, xprob_y	
-
+#  计算在知道特征X的情况下的P（Y=ck|X=x）的值
 def f(cp, X, px_y):
 #	log()
 	i = 0
@@ -41,7 +41,7 @@ def f(cp, X, px_y):
 		ans += math.log(px_y[i][x], 2)
 		i += 1
 	return ans + math.log(cp, 2)	
-
+#  分类，输入训练集data和待分类实例X
 def classifer(data, X):
 	class_prob, xprob_y = clacProb(data)
 	m = len(X)
